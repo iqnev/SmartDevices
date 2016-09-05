@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/qnev.iot.iml" filepath="$PROJECT_DIR$/.idea/modules/qnev.iot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/qnev.iot_main.iml" filepath="$PROJECT_DIR$/.idea/modules/qnev.iot_main.iml" group="qnev.iot" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/qnev.iot_test.iml" filepath="$PROJECT_DIR$/.idea/modules/qnev.iot_test.iml" group="qnev.iot" />
+    </modules>
+  </component>
+</project>
