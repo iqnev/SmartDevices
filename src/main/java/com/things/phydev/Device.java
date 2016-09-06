@@ -69,8 +69,7 @@ public interface Device {
      * object is added, it is ready to receive events. If listener ipsoListener
      * is <code>Null</code>, no exception is thrown and no action is performed.
      *
-     * @param ipsoListener
-     *            the object by type <code>IpsoObject</code> {@link SmartObject}.
+     * @param ipsoListener the object by type <code>IpsoObject</code> {@link SmartObject}.
      */
     public void addSmartListener(SmartListener ipsoListener);
 
@@ -81,8 +80,7 @@ public interface Device {
      * previously added to this component. If listener ipsoListener is
      * <code>Null</code>, no exception is thrown and no action is performed.
      *
-     * @param smartListener
-     *            the object by type <code>IpsoObject</code> {@link SmartObject}.
+     * @param smartListener the object by type <code>IpsoObject</code> {@link SmartObject}.
      */
     public void removeIpsoListener(SmartListener smartListener);
 
@@ -90,8 +88,7 @@ public interface Device {
      * Adds SMART object which is provided by SMART object id. When the method
      * gets the <code>smartID</code> then it checks if SMART object exists.
      *
-     * @param smartID
-     *            the id of the IPSO object.
+     * @param smartID the id of the IPSO object.
      */
     public void addObjects(int smartID);
 }
