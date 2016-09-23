@@ -78,12 +78,12 @@ public interface Packet {
     public Object getData();
 
     /**
-     * Returns the message id. This id is a unique identifier for every message,
+     * Returns the package id. This id is a unique identifier for every message,
      * which was sent by the <b>Driver</b>.
      *
-     * @return the message id.
+     * @return the package id.
      */
-    public long getMessageId();
+    public long getPackageId();
 
     /**
      * Returns data format, which is supported by the current communication
