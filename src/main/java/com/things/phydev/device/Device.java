@@ -12,8 +12,10 @@
  * this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
  */
 
-package com.things.phydev;
+package com.things.phydev.device;
 
+
+import com.things.phydev.SmartObject;
 
 import java.util.List;
 
@@ -71,7 +73,7 @@ public interface Device {
      *
      * @param ipsoListener the object by type <code>IpsoObject</code> {@link SmartObject}.
      */
-    public void addSmartListener(SmartListener ipsoListener);
+    public void addSmartListener(DeviceListener ipsoListener);
 
     /**
      * Removes the specified SMART listener so that it no longer receives IPSO
@@ -80,9 +82,9 @@ public interface Device {
      * previously added to this component. If listener ipsoListener is
      * <code>Null</code>, no exception is thrown and no action is performed.
      *
-     * @param smartListener the object by type <code>IpsoObject</code> {@link SmartObject}.
+     * @param deviceListener the object by type <code>IpsoObject</code> {@link SmartObject}.
      */
-    public void removeIpsoListener(SmartListener smartListener);
+    public void removeIpsoListener(DeviceListener deviceListener);
 
     /**
      * Adds SMART object which is provided by SMART object id. When the method

@@ -12,29 +12,36 @@
  * this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
  */
 
-package com.things.phydev;
+package com.things.phydev.device;
 
-public interface SmartEvent {
-    /**
-     * Retrieve the value of an event device object. This object consist of all
-     * information about a current device.
-     *
-     * @return the device object {@link Device}.
-     */
-    public Device getDevice();
+import com.things.phydev.device.Device;
+import com.things.phydev.device.DeviceListener;
+
+import java.util.List;
+
+/**
+ *
+ */
+public interface DeviceManager {
 
     /**
-     * Retrieve the value of an event SMART object. Through this method you can
-     * recieve value changed of the SMART resource.
      *
      * @return
      */
-    public SmartObject getSmart();
+    public List<Device> getAllDevices();
 
     /**
-     * Returns the topic of this event.
      *
-     * @return the topic of this event.
+     * @param deviceListener
      */
-    public String getTopic();
+    public void removeDeviceListener(DeviceListener deviceListener);
+
+    /**
+     *
+     * @param deviceListener
+     */
+    public void addDeviceListener(DeviceListener deviceListener);
+
+    //TODO
+    //public List<Device> getAllDevicesByClass()
 }

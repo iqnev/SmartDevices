@@ -12,16 +12,32 @@
  * this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
  */
 
-package com.things.phydev;
+package com.things.phydev.device;
 
-public interface SmartListener {
+import com.things.phydev.SmartObject;
+import com.things.phydev.device.Device;
+
+public interface DeviceEvent {
     /**
-     * This method is called when there is a change in any of the SMART objects
-     * of the device. The event contains object by type {@link SmartObject}. You
-     * can use all methods, that are provided from event object.
+     * Retrieve the value of an event device object. This object consist of all
+     * information about a current device.
      *
-     * @param event
-     *            the event object {@link SmartObject}.
+     * @return the device object {@link Device}.
      */
-    public void smartEvent(SmartEvent event);
+    public Device getDevice();
+
+    /**
+     * Retrieve the value of an event SMART object. Through this method you can
+     * recieve value changed of the SMART resource.
+     *
+     * @return
+     */
+    public SmartObject getSmart();
+
+    /**
+     * Returns the topic of this event.
+     *
+     * @return the topic of this event.
+     */
+    public String getTopic();
 }
