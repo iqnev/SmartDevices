@@ -14,6 +14,7 @@
 
 package com.things.phydev.impl.devices;
 
+import com.things.phydev.communication.DeviceAccess;
 import com.things.phydev.device.Device;
 import com.things.phydev.device.DeviceEvent;
 import com.things.phydev.device.DeviceListener;
@@ -28,6 +29,8 @@ public abstract class AbstractDeviceManager {
      * The list with all devices.
      */
     public  List<Device> devices;
+    
+    public DeviceAccess dAccess;
 
     /**
      * The list with registered event listeners.
