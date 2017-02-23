@@ -18,6 +18,7 @@ import com.things.phydev.device.Device;
 import com.things.phydev.device.DeviceListener;
 import com.things.phydev.device.DeviceManager;
 import com.things.phydev.communication.CommunicationListener;
+import com.things.phydev.communication.DeviceAccess;
 import com.things.phydev.communication.ReceivedMessage;
 
 import java.util.List;
@@ -26,7 +27,16 @@ import java.util.List;
  * TODO
  */
 public class DeviceManagerImpl extends AbstractDeviceManager implements CommunicationListener, DeviceManager {
-
+	
+	/**
+	 * 
+	 * @param deviceAccess
+	 */
+	public DeviceManagerImpl(final DeviceAccess deviceAccess) {
+		this.dAccess = deviceAccess;
+		
+		this.dAccess.addCommunicationListener(this);
+	}
 
     @Override
     public boolean addDevice(String devID) {
@@ -35,7 +45,12 @@ public class DeviceManagerImpl extends AbstractDeviceManager implements Communic
 
     @Override
     public boolean deleteDevice(String devID) {
-        return false;
+    	boolean successDeleted = false;
+    	if(devID != null) {
+    		this.devices.remove(1); //Todo add method getDeviceByID()
+    		successDeleted = true;
+    	}
+        return successDeleted;
     }
 
     @Override
@@ -55,7 +70,7 @@ public class DeviceManagerImpl extends AbstractDeviceManager implements Communic
 
     @Override
     public List<Device> getAllDevices() {
-        return null;
+        return this.devices;
     }
 
     @Override
