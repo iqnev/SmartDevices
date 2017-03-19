@@ -13,36 +13,51 @@
  */
 package com.things.phydev.impl.transport;
 
+import java.io.DataInputStream;
 import java.io.IOException;
+import java.net.Socket;
 
-import com.things.phydev.communication.Packet;
-import com.things.phydev.communication.TransportListener;
-import com.things.phydev.transport.Transport;
+/**
+ * @author fortran
+ *
+ */
+public class TransportRequest implements Runnable{
+	private Socket socket;
+	private DataInputStream clientData;
 
-public class SerialConnection implements Transport{
-
-	@Override
-	public void sendData(Packet mData) throws IOException {
-		// TODO Auto-generated method stub
-		
+	/**
+	 * Default Constructor.
+	 * 
+	 * @param clientSocket
+	 *            the connection to be made to this socket and accepts it.
+	 */
+	public TransportRequest(Socket clientSocket) {
+		this.socket = clientSocket;
 	}
 
 	@Override
-	public void addTransportListener(TransportListener transportListener) {
-		// TODO Auto-generated method stub
-		
+	public void run() {
+		try {
+			clientData = new DataInputStream(this.socket.getInputStream());
+			//reading the frame
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			closeResources();
+		}
 	}
 
-	@Override
-	public void removeTransportListener(TransportListener transportListener) {
-		// TODO Auto-generated method stub
-		
+	/**
+	 * Closing all open resources.
+	 */
+	private void closeResources() {
+		// Closing the stream handle
+		if (clientData != null) {
+			try {
+				clientData.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
-
-	@Override
-	public boolean close() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

@@ -15,6 +15,7 @@ package com.things.phydev.impl.transport;
 
 import java.util.ArrayList;
 
+import com.things.phydev.communication.ReceivedMessage;
 import com.things.phydev.communication.TransportListener;
 
 public class AbstractTransport {
@@ -24,8 +25,13 @@ public class AbstractTransport {
 	protected AbstractTransport() {
 		this.tListeners = new ArrayList<>();
 	}
-	
-	public void notifyListeners() {
-		//TODO
+
+	/**
+	 * Notify observers of change.
+	 */
+	public void notifyListeners(ReceivedMessage btMessage) {
+		for (TransportListener listener : tListeners) {
+			listener.transportDataRecived(btMessage);
+		}
 	}
 }
