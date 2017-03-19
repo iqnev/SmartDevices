@@ -14,28 +14,86 @@
 package com.things.phydev.impl.transport;
 
 import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.things.phydev.communication.Packet;
 import com.things.phydev.communication.TransportListener;
 import com.things.phydev.transport.Transport;
 
 public class TCPConnection extends AbstractTransport implements Transport {
+	
+	private static TCPConnection instance;
 
+	private ServerSocket serverSocket = null;
+
+	private Socket clientSocket;
+
+	private static final int PORT = 2323;
+
+	private static final int MAX_THREAD = 13;
+	
+	private ExecutorService executorService = Executors
+			.newFixedThreadPool(MAX_THREAD);
+	
+	private void TCPConnection() throws IOException {
+		
+		connect();
+	}
+	
+	public static TCPConnection getInstance() throws IOException {
+		if (instance == null) {
+			synchronized (TCPConnection.class) {
+				instance = new TCPConnection();
+			}
+		}
+		return instance;
+	}	
+	
+	private void connect() throws IOException {
+		serverSocket = new ServerSocket(PORT);
+	}
+	
+	private void start() throws IOException {
+		try {
+			while (true) {
+				clientSocket = serverSocket.accept();
+				executorService.execute(new TransportRequest(clientSocket));
+			}
+		} finally {
+			// shutdown the thread-pool when we are done
+			executorService.shutdown();
+			if (clientSocket != null) {
+				clientSocket.close();
+			}
+		}
+	}
+	
 	@Override
 	public void sendData(Packet mData) throws IOException {
-		// TODO Auto-generated method stub
+		// TODO gets socket by device id and getRequestPackage method Calling
+		if(mData.getDeviceId() == null) {
+			throw new NullPointerException("Device ID is null");
+		}
+		
 		
 	}
 
 	@Override
 	public void addTransportListener(TransportListener transportListener) {
-		// TODO Auto-generated method stub
+		if (transportListener != null) {
+			this.tListeners.add(transportListener);
+		}
 		
 	}
 
 	@Override
 	public void removeTransportListener(TransportListener transportListener) {
-		// TODO Auto-generated method stub
+		if (transportListener != null) {
+			this.tListeners.remove(transportListener);
+		}
 		
 	}
 
