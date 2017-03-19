@@ -13,9 +13,59 @@
  */
 package com.things.phydev.impl.transport;
 
+import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+
 public class SocketBase {
+	/*
+	 * All open sockets.
+	 */
+	private volatile Map<String, Socket> openSockets;
 	
+	private static SocketBase instance = null;
+
 	private SocketBase() {
+		this.openSockets = new HashMap<String, Socket>();
+	}
+	
+	public static SocketBase getInstance() {
+		if (instance == null) {
+			synchronized (SocketBase.class) {
+				instance = new SocketBase();
+			}
+		}
+		return instance;
+	}
+	
+	/**
+	 * Associates the specified socket with the specified device
+	 * identification in map. If the map previously contained a mapping for the
+	 * device identification, the old value is replaced by the specified value.
+	 * 
+	 * @param deviceID
+	 * @param socket
+	 */
+	protected synchronized void addSocket(String deviceID, Socket socket) {
+		if (deviceID != null) {
+			this.openSockets.put(deviceID, socket);
+		}
+	}
+
+	/**
+	 * Returns the socket to which the specified device identification is
+	 * mapped, or <code>NULL</code> if this map contains no mapping for the key.
+	 * 
+	 * @param deviceID
+	 * @return
+	 */
+	protected synchronized Socket getSocket(String deviceID) {
+		Socket socket = null;
 		
+		if((socket = this.openSockets.get(deviceID)) == null) { //TODO
+			socket = null;
+		}
+		
+		return socket;
 	}
 }
