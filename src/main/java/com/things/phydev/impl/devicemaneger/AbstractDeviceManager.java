@@ -12,7 +12,7 @@
  * this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
  */
 
-package com.things.phydev.impl.devices;
+package com.things.phydev.impl.devicemaneger;
 
 import com.things.phydev.communication.DeviceAccess;
 import com.things.phydev.device.Device;
