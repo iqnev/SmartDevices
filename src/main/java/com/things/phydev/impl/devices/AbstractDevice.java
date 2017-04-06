@@ -16,6 +16,7 @@ package com.things.phydev.impl.devices;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.things.phydev.SmartListener;
 import com.things.phydev.SmartObject;
 import com.things.phydev.communication.DeviceAccess;
 
@@ -28,7 +29,7 @@ public abstract class AbstractDevice {
 	protected final List<SmartObject> objects;
 
 	
-	protected List<SmartObject> smartListener;
+	protected List<SmartListener> smartListener;
 
 	
 	protected String ID;

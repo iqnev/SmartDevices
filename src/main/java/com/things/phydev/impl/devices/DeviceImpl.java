@@ -15,6 +15,7 @@ package com.things.phydev.impl.devices;
 
 import java.util.List;
 
+import com.things.phydev.SmartListener;
 import com.things.phydev.SmartObject;
 import com.things.phydev.communication.DeviceAccess;
 import com.things.phydev.device.Device;
@@ -43,9 +44,9 @@ public class DeviceImpl extends AbstractDevice implements Device{
 	}
 
 	@Override
-	public void addSmartListener(DeviceListener devListener) {
+	public void addSmartListener(SmartListener smtListener) {
 		if (smartListener != null) {
-			this.smartListener.add(devListener); //TODO
+			this.smartListener.add(smtListener);
 		}
 		
 	}
