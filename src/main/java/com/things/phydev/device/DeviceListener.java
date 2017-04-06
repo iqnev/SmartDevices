@@ -14,17 +14,14 @@
 
 package com.things.phydev.device;
 
-import com.things.phydev.SmartObject;
 import com.things.phydev.device.DeviceEvent;
 
 public interface DeviceListener {
     /**
-     * This method is called when there is a change in any of the SMART objects
-     * of the device. The event contains object by type {@link SmartObject}. You
-     * can use all methods, that are provided from event object.
+     * This method is called when a device is registered during an inquiry.
      *
      * @param event
-     *            the event object {@link SmartObject}.
+     *            the event object {@link DeviceEvent}.
      */
     public void smartEvent(DeviceEvent event);
 }
