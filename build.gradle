@@ -10,7 +10,10 @@ repositories {
 }
 
 dependencies {
-  
+
+  	// https://mvnrepository.com/artifact/com.pi4j/pi4j-core
+	compile group: 'com.pi4j', name: 'pi4j-core', version: '1.1'
+  	
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
 }
