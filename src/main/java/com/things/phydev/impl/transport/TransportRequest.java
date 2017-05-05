@@ -31,7 +31,7 @@ public class TransportRequest implements Runnable{
 	 * @param clientSocket
 	 *            the connection to be made to this socket and accepts it.
 	 */
-	public TransportRequest(Socket clientSocket) {
+	public TransportRequest(final Socket clientSocket) {
 		this.socket = clientSocket;
 	}
 

@@ -38,6 +38,11 @@ public class TCPConnection extends AbstractTransport implements Transport {
 	private ExecutorService executorService = Executors
 			.newFixedThreadPool(MAX_THREAD);
 	
+	/**
+	 * Default Constructor.
+	 * 
+	 * @throws IOException
+	 */
 	private void TCPConnection() throws IOException {
 		
 		connect();
@@ -98,9 +103,10 @@ public class TCPConnection extends AbstractTransport implements Transport {
 	}
 
 	@Override
-	public boolean close() {
-		// TODO Auto-generated method stub
-		return false;
+	public void close() throws IOException {
+		if(serverSocket != null) {
+			serverSocket.close();
+		}
 	}
 
 }

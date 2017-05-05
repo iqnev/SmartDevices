@@ -56,9 +56,7 @@ public interface Transport {
 
     /**
      * Closes the open connection.
-     *
-     * @return <code>true</code> if the connection is closed. <code>false</code>
-     * otherwise.
+	 *
      */
-    public boolean close();
+    public void close() throws IOException;
 }
